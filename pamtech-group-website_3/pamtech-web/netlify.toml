@@ -1,15 +1,21 @@
-# Netlify picks up the Next.js runtime automatically — it does not need to
-# be declared here, and pinning it is discouraged because the adapter is
-# updated to track new Next.js releases.
+# The Next.js runtime is declared EXPLICITLY. Netlify detects Next.js by
+# looking for package.json at the repository ROOT — this project sits in a
+# subdirectory, so detection silently fails, no runtime attaches, and the
+# deploy succeeds while serving a 404 for every route.
+#
+# Do NOT add a catch-all redirect to /index.html. That is for static
+# exports; with the App Router it bypasses the runtime entirely.
 
 [build]
   command = "npm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# Security headers. Cheap to set, and there is no reason a brochure site
-# should be embeddable in someone else's frame.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [[headers]]
   for = "/*"
   [headers.values]
