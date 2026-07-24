@@ -1,0 +1,25 @@
+<!--
+  NETLIFY FORMS — FORM DECLARATION
+  ---------------------------------------------------------------
+  This file exists so Netlify's build-time parser can discover the
+  contact form and its fields. It is never shown to anyone: the real
+  form is components/ContactForm.tsx, which POSTs into this endpoint.
+
+  If you add a field to ContactForm.tsx you MUST add it here too, or
+  Netlify will silently drop it from every submission.
+-->
+<html>
+  <head><title>Form declaration</title></head>
+  <body>
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="enquiry" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
